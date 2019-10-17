@@ -1,0 +1,9 @@
+<library path="lib/libgazebo_rotating_lidar">
+  <class name="sensors/rotating_lidar"
+         type="gazebo::sensors::RotatingLidarSensor"
+         base_class_type="gazebo::sensors::Sensor">
+    <description> 
+      Gazebo sensor simulating a lidar with rotating mirror inside.
+    </description>
+  </class>
+</library>

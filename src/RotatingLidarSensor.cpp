@@ -2,12 +2,17 @@
 
 #include <boost/algorithm/string.hpp>
 
+using gazebo::sensors::Sensor;
+using gazebo::sensors::SensorFactory;
+extern "C"
+{
+  GZ_REGISTER_STATIC_SENSOR("rotating_lidar", RotatingLidarSensor)
+}
+
 namespace gazebo
 {
 namespace sensors
 {
-
-GZ_REGISTER_STATIC_SENSOR("rotating_lidar", RotatingLidarSensor)
 
 class RotatingLidarSensorPrivate
 {
@@ -22,6 +27,7 @@ RotatingLidarSensor::RotatingLidarSensor() : Sensor(sensors::RAY),  //TODO: mayb
 void RotatingLidarSensor::Load(const std::string &_worldName)
 {
   Sensor::Load(_worldName);
+  gzmsg << "Rotating lidar loaded" << std::endl;
 }
 
 void RotatingLidarSensor::Init()

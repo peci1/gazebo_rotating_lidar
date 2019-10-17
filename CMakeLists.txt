@@ -10,7 +10,7 @@ find_package(Boost REQUIRED)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
-  CATKIN_DEPENDS gazebo_dev gazebo_ros
+  CATKIN_DEPENDS gazebo_custom_sensor_preloader gazebo_dev
 )
 
 include_directories(
@@ -39,3 +39,5 @@ install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h"
 )
+
+install(FILES sensors.xml DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
