@@ -12,6 +12,9 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>gazebo_dev</depend>
+  <depend>gazebo_plugins</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
 
   <exec_depend>gazebo_custom_sensor_preloader</exec_depend>
 

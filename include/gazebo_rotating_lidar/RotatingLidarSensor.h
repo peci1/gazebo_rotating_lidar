@@ -12,18 +12,25 @@ namespace sensors
 
 class RotatingLidarSensorPrivate;
 
-class GZ_SENSORS_VISIBLE RotatingLidarSensor : public Sensor
+class GZ_SENSORS_VISIBLE RotatingLidarSensor : public RaySensor
 {
   public: RotatingLidarSensor();
   public: ~RotatingLidarSensor() override;
 
   public: void Load(const std::string &_worldName) override;
   public: void Init() override;
+  public: virtual void Reset();
   protected: void Fini() override;
-  public: std::string Topic() const override;
   protected: bool UpdateImpl(bool force) override;
+  public: std::string Topic() const override;
+  public: bool IsActive() const override;
+
+  public: common::Time TimeIncrement() const;
+  public: common::Time ScanTime() const;
 
   private: std::unique_ptr<RotatingLidarSensorPrivate> dataPtr;
+
+  friend class RotatingLidarSensorPrivate;
 };
 
 }
