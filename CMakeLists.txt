@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10.2)
 project(gazebo_rotating_lidar)
 
 find_package(catkin REQUIRED COMPONENTS
@@ -13,7 +13,7 @@ find_package(Boost REQUIRED)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
-  CATKIN_DEPENDS gazebo_custom_sensor_preloader gazebo_dev gazebo_plugins roscpp sensor_msgs
+  CATKIN_DEPENDS gazebo_dev gazebo_plugins roscpp sensor_msgs
 )
 
 include_directories(
@@ -40,7 +40,7 @@ add_library(gazebo_ros_rotating_lidar src/RotatingLidarRosPlugin.cpp)
 add_dependencies(gazebo_ros_rotating_lidar ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(gazebo_ros_rotating_lidar ${PROJECT_NAME} RayPlugin ${catkin_LIBRARIES})
 
-if(${CATKIN_ENABLE_TESTING})
+if(CATKIN_ENABLE_TESTING)
   catkin_add_gtest(test_scan_iterator test/test_scan_iterator.cpp)
   target_link_libraries(test_scan_iterator ${catkin_LIBRARIES} ${PROJECT_NAME})
 endif()
